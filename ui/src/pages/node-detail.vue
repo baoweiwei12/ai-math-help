@@ -161,7 +161,7 @@
                   <v-textarea
                     v-model="userInput"
                     placeholder="输入您的问题..."
-                    rows="2"
+                    rows="1"
                     auto-grow
                     hide-details
                     density="comfortable"
@@ -195,9 +195,6 @@
                     </div>
                     <div class="message-content">
                       <div class="message-text" v-html="message.role === 'user' ? message.content : renderMarkdown(message.content)"></div>
-                      <div v-if="message.feedback" :class="['message-feedback', message.isCorrect ? 'correct-feedback' : 'incorrect-feedback']">
-                        {{ message.feedback }}
-                      </div>
                       <div class="message-time">{{ message.time }}</div>
                     </div>
                   </div>
@@ -221,7 +218,7 @@
                   <v-textarea
                     v-model="quizInput"
                     placeholder="输入您的答案..."
-                    rows="2"
+                    rows="1"
                     auto-grow
                     hide-details
                     density="comfortable"

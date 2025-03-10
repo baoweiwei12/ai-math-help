@@ -8,7 +8,7 @@
         "name": "课程思政",
         "type": "concept",
         "description": "从一维到多维的数学思维扩展",
-        "completed": true,
+        "completed": false,
         "questions": [
           {
             "content": "如何从一维思维扩展到多维思维？",
@@ -19,7 +19,7 @@
       {
         "name": "9.1 多元函数的基本概念",
         "type": "section",
-        "completed": true,
+        "completed": false,
         "children": [
           {
             "name": "9.1.1 平面区域",
@@ -49,7 +49,7 @@
               "概念性"
             ],
             "description": "n维空间与几何表示",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "如何定义多元函数？",
@@ -65,7 +65,7 @@
               "概念性"
             ],
             "description": "二重极限定义与路径验证",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "如何定义二元函数的极限？",
@@ -98,7 +98,7 @@
           "重点",
           "程序性"
         ],
-        "completed": true,
+        "completed": false,
         "children": [
           {
             "name": "9.2.1 偏导数",
@@ -108,7 +108,7 @@
               "程序性"
             ],
             "description": "几何意义与高阶偏导",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "偏导数的几何意义是什么？",
@@ -124,7 +124,7 @@
               "概念性"
             ],
             "description": "存在条件与形式不变性",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "全微分的存在条件是什么？",
@@ -141,7 +141,7 @@
           "考点",
           "程序性"
         ],
-        "completed": true,
+        "completed": false,
         "children": [
           {
             "name": "9.3.1 链式法则",
@@ -151,7 +151,7 @@
               "程序性"
             ],
             "description": "二阶偏导计算",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "链式法则在多元函数中的应用是什么？",
@@ -167,7 +167,7 @@
               "概念性"
             ],
             "description": "雅可比行列式应用",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "隐函数定理的作用是什么？",
@@ -184,7 +184,7 @@
           "考点",
           "程序性"
         ],
-        "completed": true,
+        "completed": false,
         "children": [
           {
             "name": "9.4.1 非条件极值",
@@ -193,7 +193,7 @@
               "重点"
             ],
             "description": "Hessian矩阵应用",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "如何利用Hessian矩阵判断极值？",
@@ -209,7 +209,7 @@
               "程序性"
             ],
             "description": "边界与内部比较法",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "如何求解多元函数的最值？",
@@ -242,7 +242,7 @@
           "重点",
           "概念性"
         ],
-        "completed": true,
+        "completed": false,
         "children": [
           {
             "name": "9.5.1 方向导数",
@@ -252,7 +252,7 @@
               "程序性"
             ],
             "description": "方向角确定方法",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "如何计算方向导数？",
@@ -285,7 +285,7 @@
           "课程思政",
           "程序性"
         ],
-        "completed": true,
+        "completed": false,
         "children": [
           {
             "name": "9.6.1 几何应用",
@@ -295,7 +295,7 @@
               "程序性"
             ],
             "description": "切线/切平面方程",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "如何求曲面的切平面方程？",
@@ -311,7 +311,7 @@
               "程序性"
             ],
             "description": "投入产出优化",
-            "completed": true,
+            "completed": false,
             "questions": [
               {
                 "content": "微分学在经济优化中的应用是什么？",

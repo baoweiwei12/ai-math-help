@@ -470,10 +470,6 @@ const initializeChat = async () => {
         }
         quizMessages.value.push(quizWelcomeMessage)
         
-        // 自动发送第一个问题
-        setTimeout(() => {
-          sendQuizQuestion()
-        }, 1000)
       }
     } catch (error) {
       console.error('加载聊天历史失败:', error)
@@ -493,10 +489,6 @@ const initializeChat = async () => {
       }
       quizMessages.value.push(quizWelcomeMessage)
       
-      // 自动发送第一个问题
-      setTimeout(() => {
-        sendQuizQuestion()
-      }, 1000)
     }
   }
   
@@ -624,12 +616,7 @@ const submitAnswer = async () => {
         scrollToBottom(quizMessagesRef.value)
       })
       
-      // 如果回答正确，发送下一个问题
-      if (isCorrect) {
-        setTimeout(() => {
-          sendQuizQuestion()
-        }, 1500)
-      }
+
     }, 500 + Math.random() * 1000) // 随机延迟，模拟打字效果
   } catch (error) {
     console.error('检查答案失败:', error)

@@ -1,10 +1,16 @@
 <template>
-  <v-card class="mx-auto my-4" elevation="4">
+  <v-card
+    class="mx-auto my-4"
+    elevation="4"
+  >
     <v-card-title class="text-h5 font-weight-bold">
       数学章节结构图
     </v-card-title>
     <v-card-text>
-      <div ref="chartRef" style="width: 100%; height: 600px;"></div>
+      <div
+        ref="chartRef"
+        style="width: 100%; height: 600px;"
+      />
     </v-card-text>
   </v-card>
 </template>

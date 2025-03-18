@@ -1,13 +1,17 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <v-container>
     <!-- 添加面包屑导航 -->
     <v-row>
       <v-col cols="12">
-        <v-breadcrumbs :items="breadcrumbs" class="pa-0 mb-4">
-          <template v-slot:divider>
-            <v-icon icon="mdi-chevron-right"></v-icon>
+        <v-breadcrumbs
+          :items="breadcrumbs"
+          class="pa-0 mb-4"
+        >
+          <template #divider>
+            <v-icon icon="mdi-chevron-right" />
           </template>
-          <template v-slot:title="{ item }">
+          <template #title="{ item }">
             <v-btn
               variant="text"
               :color="item.disabled ? '' : 'primary'"
@@ -22,14 +26,25 @@
     </v-row>
     
     <v-row v-if="isLoading">
-      <v-col cols="12" class="d-flex justify-center align-center" style="height: 300px;">
-        <v-progress-circular indeterminate color="primary" size="64"></v-progress-circular>
+      <v-col
+        cols="12"
+        class="d-flex justify-center align-center"
+        style="height: 300px;"
+      >
+        <v-progress-circular
+          indeterminate
+          color="primary"
+          size="64"
+        />
       </v-col>
     </v-row>
     
     <v-row v-else>
       <v-col cols="12">
-        <v-card class="mx-auto my-4" elevation="4">
+        <v-card
+          class="mx-auto my-4"
+          elevation="4"
+        >
           <v-card-title class="text-h4 font-weight-bold d-flex align-center">
             {{ nodeData ? nodeData.name : '节点详情' }}
             <v-chip
@@ -39,7 +54,7 @@
             >
               {{ nodeData.completed ? '已完成学习' : '未完成学习' }}
             </v-chip>
-            <v-spacer></v-spacer>
+            <v-spacer />
             <v-btn-toggle
               v-model="activeMode"
               mandatory
@@ -48,15 +63,21 @@
               density="comfortable"
             >
               <v-btn value="info">
-                <v-icon left>mdi-information-outline</v-icon>
+                <v-icon left>
+                  mdi-information-outline
+                </v-icon>
                 信息
               </v-btn>
               <v-btn value="learn">
-                <v-icon left>mdi-book-open-variant</v-icon>
+                <v-icon left>
+                  mdi-book-open-variant
+                </v-icon>
                 学习
               </v-btn>
               <v-btn value="quiz">
-                <v-icon left>mdi-help-circle-outline</v-icon>
+                <v-icon left>
+                  mdi-help-circle-outline
+                </v-icon>
                 答题
               </v-btn>
             </v-btn-toggle>
@@ -64,7 +85,10 @@
           
           <v-card-subtitle v-if="nodeData && nodeData.type">
             类型: {{ nodeData.type }}
-            <span v-if="nodeData.tags && nodeData.tags.length > 0" class="ml-4">
+            <span
+              v-if="nodeData.tags && nodeData.tags.length > 0"
+              class="ml-4"
+            >
               标签:
               <v-chip
                 v-for="(tag, index) in nodeData.tags"
@@ -84,18 +108,28 @@
               v-if="!nodeData"
               type="warning"
               text="未找到节点数据"
-            ></v-alert>
+            />
             
             <div v-else>
               <!-- 信息模式 -->
               <div v-if="activeMode === 'info'">
-                <div v-if="nodeData.description" class="my-4">
-                  <div class="text-h6">描述:</div>
+                <div
+                  v-if="nodeData.description"
+                  class="my-4"
+                >
+                  <div class="text-h6">
+                    描述:
+                  </div>
                   <div>{{ nodeData.description }}</div>
                 </div>
                 
-                <div v-if="nodeData.children && nodeData.children.length > 0" class="my-4">
-                  <div class="text-h6">子节点:</div>
+                <div
+                  v-if="nodeData.children && nodeData.children.length > 0"
+                  class="my-4"
+                >
+                  <div class="text-h6">
+                    子节点:
+                  </div>
                   <v-list>
                     <v-list-item
                       v-for="(child, index) in nodeData.children"
@@ -104,12 +138,12 @@
                       :subtitle="child.type"
                       :prepend-icon="getNodeIcon(child.type)"
                       :append-icon="'mdi-arrow-right'"
-                      @click="navigateToNode(getChildPath(index))"
                       class="my-1"
                       rounded="lg"
                       :color="child.completed ? 'success-lighten-4' : 'error-lighten-4'"
+                      @click="navigateToNode(getChildPath(index))"
                     >
-                      <template v-slot:append>
+                      <template #append>
                         <v-chip
                           size="small"
                           :color="child.completed ? 'success' : 'error'"
@@ -124,34 +158,58 @@
               </div>
               
               <!-- 学习模式 -->
-              <div v-else-if="activeMode === 'learn'" class="chat-container">
-                <div class="chat-messages" ref="chatMessagesRef">
+              <div
+                v-else-if="activeMode === 'learn'"
+                class="chat-container"
+              >
+                <div
+                  ref="chatMessagesRef"
+                  class="chat-messages"
+                >
                   <div 
                     v-for="(message, index) in chatMessages" 
                     :key="index" 
                     :class="['message', message.role === 'user' ? 'user-message' : 'ai-message']"
                   >
                     <div class="message-avatar">
-                      <v-avatar :color="message.role === 'user' ? 'primary' : 'success'" size="36">
-                        <v-icon color="white">{{ message.role === 'user' ? 'mdi-account' : 'mdi-robot' }}</v-icon>
+                      <v-avatar
+                        :color="message.role === 'user' ? 'primary' : 'success'"
+                        size="36"
+                      >
+                        <v-icon color="white">
+                          {{ message.role === 'user' ? 'mdi-account' : 'mdi-robot' }}
+                        </v-icon>
                       </v-avatar>
                     </div>
                     <div class="message-content">
-                      <div class="message-text" v-html="message.role === 'user' ? message.content : renderMarkdown(message.content)"></div>
-                      <div class="message-time">{{ message.time }}</div>
+                      <div
+                        class="message-text"
+                        v-html=" renderMarkdown(message.content)"
+                      />
+                      <div class="message-time">
+                        {{ message.time }}
+                      </div>
                     </div>
                   </div>
-                  <div v-if="isAiTyping" class="message ai-message">
+                  <div
+                    v-if="isAiTyping"
+                    class="message ai-message"
+                  >
                     <div class="message-avatar">
-                      <v-avatar color="success" size="36">
-                        <v-icon color="white">mdi-robot</v-icon>
+                      <v-avatar
+                        color="success"
+                        size="36"
+                      >
+                        <v-icon color="white">
+                          mdi-robot
+                        </v-icon>
                       </v-avatar>
                     </div>
                     <div class="message-content">
                       <div class="message-text typing-indicator">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span />
+                        <span />
+                        <span />
                       </div>
                     </div>
                   </div>
@@ -165,15 +223,15 @@
                     auto-grow
                     hide-details
                     density="comfortable"
-                    @keydown.enter.prevent="sendMessage"
                     class="chat-textarea"
                     color="primary"
-                  ></v-textarea>
+                    @keydown.enter.prevent="sendMessage"
+                  />
                   <v-btn 
                     color="primary" 
                     :disabled="!userInput.trim() || isAiTyping" 
-                    @click="sendMessage"
                     class="ml-2"
+                    @click="sendMessage"
                   >
                     <v-icon>mdi-send</v-icon>
                   </v-btn>
@@ -181,34 +239,58 @@
               </div>
               
               <!-- 答题模式 -->
-              <div v-else-if="activeMode === 'quiz'" class="chat-container">
-                <div class="chat-messages" ref="quizMessagesRef">
+              <div
+                v-else-if="activeMode === 'quiz'"
+                class="chat-container"
+              >
+                <div
+                  ref="quizMessagesRef"
+                  class="chat-messages"
+                >
                   <div 
                     v-for="(message, index) in quizMessages" 
                     :key="index" 
                     :class="['message', message.role === 'user' ? 'user-message' : 'ai-message']"
                   >
                     <div class="message-avatar">
-                      <v-avatar :color="message.role === 'user' ? 'primary' : 'error'" size="36">
-                        <v-icon color="white">{{ message.role === 'user' ? 'mdi-account' : 'mdi-school' }}</v-icon>
+                      <v-avatar
+                        :color="message.role === 'user' ? 'primary' : 'error'"
+                        size="36"
+                      >
+                        <v-icon color="white">
+                          {{ message.role === 'user' ? 'mdi-account' : 'mdi-school' }}
+                        </v-icon>
                       </v-avatar>
                     </div>
                     <div class="message-content">
-                      <div class="message-text" v-html="message.role === 'user' ? message.content : renderMarkdown(message.content)"></div>
-                      <div class="message-time">{{ message.time }}</div>
+                      <div
+                        class="message-text"
+                        v-html=" renderMarkdown(message.content)"
+                      />
+                      <div class="message-time">
+                        {{ message.time }}
+                      </div>
                     </div>
                   </div>
-                  <div v-if="isQuizTyping" class="message ai-message">
+                  <div
+                    v-if="isQuizTyping"
+                    class="message ai-message"
+                  >
                     <div class="message-avatar">
-                      <v-avatar color="error" size="36">
-                        <v-icon color="white">mdi-school</v-icon>
+                      <v-avatar
+                        color="error"
+                        size="36"
+                      >
+                        <v-icon color="white">
+                          mdi-school
+                        </v-icon>
                       </v-avatar>
                     </div>
                     <div class="message-content">
                       <div class="message-text typing-indicator">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span />
+                        <span />
+                        <span />
                       </div>
                     </div>
                   </div>
@@ -222,15 +304,15 @@
                     auto-grow
                     hide-details
                     density="comfortable"
-                    @keydown.enter.prevent="submitAnswer"
                     class="chat-textarea"
                     color="error"
-                  ></v-textarea>
+                    @keydown.enter.prevent="submitAnswer"
+                  />
                   <v-btn 
                     color="error" 
                     :disabled="!quizInput.trim() || isQuizTyping" 
-                    @click="submitAnswer"
                     class="ml-2"
+                    @click="submitAnswer"
                   >
                     <v-icon>mdi-send</v-icon>
                   </v-btn>
@@ -248,8 +330,8 @@
                 <v-btn
                   class="ml-4"
                   :color="nodeData.completed ? 'error' : 'success'"
-                  @click="toggleCompleted"
                   :loading="isUpdating"
+                  @click="toggleCompleted"
                 >
                   {{ nodeData.completed ? '标记为未完成' : '标记为已完成' }}
                 </v-btn>
@@ -626,53 +708,6 @@ const submitAnswer = async () => {
     const errorMessage = {
       role: 'assistant',
       content: '抱歉，我遇到了一些问题，无法检查您的答案。请稍后再试。',
-      time: formatTime(new Date())
-    }
-    quizMessages.value.push(errorMessage)
-    
-    // 滚动到底部
-    nextTick(() => {
-      scrollToBottom(quizMessagesRef.value)
-    })
-  }
-}
-
-// 发送测验问题
-const sendQuizQuestion = async () => {
-  isQuizTyping.value = true
-  
-  try {
-    // 调用API获取问题
-    const response = await courseApi.sendChatMessage(
-      nodePath.value, 
-      "请为我出一道关于这个知识点的测验题", 
-      "quiz"
-    )
-    
-    // 添加问题
-    setTimeout(() => {
-      isQuizTyping.value = false
-      
-      const questionMessage = {
-        role: 'assistant',
-        content: response.content,
-        time: formatTime(new Date())
-      }
-      quizMessages.value.push(questionMessage)
-      
-      // 滚动到底部
-      nextTick(() => {
-        scrollToBottom(quizMessagesRef.value)
-      })
-    }, 500 + Math.random() * 1000) // 随机延迟，模拟打字效果
-  } catch (error) {
-    console.error('获取问题失败:', error)
-    isQuizTyping.value = false
-    
-    // 添加错误消息
-    const errorMessage = {
-      role: 'assistant',
-      content: '抱歉，我遇到了一些问题，无法生成问题。请稍后再试。',
       time: formatTime(new Date())
     }
     quizMessages.value.push(errorMessage)

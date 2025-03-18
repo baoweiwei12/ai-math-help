@@ -90,7 +90,7 @@ class MathAgent:
         
         Args:
             node_path: 节点路径
-            mode: 聊天模式，"learn" 或 "quiz"
+            mode: 聊天模式，"learn" 或 "learn"
             
         Returns:
             聊天历史列表
@@ -204,18 +204,6 @@ class MathAgent:
         
         return content
         
-    # 为了保持向后兼容，保留原来的方法名
-    def learn(self, question: str, data: str, node_path: str):
-        """学习模式的对话"""
-        return self.chat(question, data, node_path, mode="learn")
-        
-    def quiz(self, question: str, data: str, node_path: str):
-        """测验模式的对话"""
-        return self.chat(question, data, node_path, mode="quiz")
-        
-    def tutor(self, question: str, data: str, node_path: str):
-        """辅导模式的对话，提供个性化指导"""
-        return self.chat(question, data, node_path, mode="tutor")
 
 if __name__ == "__main__":
     # 加载环境变量

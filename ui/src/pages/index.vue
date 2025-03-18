@@ -10,8 +10,16 @@
     </v-alert>
     
     <v-row v-if="loading">
-      <v-col cols="12" class="d-flex justify-center align-center" style="height: 300px;">
-        <v-progress-circular indeterminate color="primary" size="64"></v-progress-circular>
+      <v-col
+        cols="12"
+        class="d-flex justify-center align-center"
+        style="height: 300px;"
+      >
+        <v-progress-circular
+          indeterminate
+          color="primary"
+          size="64"
+        />
       </v-col>
     </v-row>
     
@@ -22,10 +30,16 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="12" md="6">
+        <v-col
+          cols="12"
+          md="6"
+        >
           <MathPieChart />
         </v-col>
-        <v-col cols="12" md="6">
+        <v-col
+          cols="12"
+          md="6"
+        >
           <MathTagsChart />
         </v-col>
       </v-row>
@@ -35,8 +49,6 @@
           <MathProgressChart />
         </v-col>
       </v-row>
-      
-
     </template>
   </v-container>
 </template>

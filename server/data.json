@@ -29,7 +29,7 @@
               "概念性"
             ],
             "description": "邻域/去心邻域/区域定义",
-            "completed": false,
+            "completed": true,
             "questions": [
               {
                 "content": "什么是平面区域的邻域？",
@@ -252,7 +252,7 @@
               "程序性"
             ],
             "description": "方向角确定方法",
-            "completed": false,
+            "completed": true,
             "questions": [
               {
                 "content": "如何计算方向导数？",

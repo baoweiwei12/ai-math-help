@@ -16,6 +16,107 @@ export const navigationData = reactive([
     to: '/study'
   },
   {
+    title: '第一章 函数与极限',
+    key: 'chapter1',
+    isOpen: false,
+    icon: 'mdi-function',
+    children: []
+  },
+  {
+    title: '第二章 导数与微分',
+    key: 'chapter2',
+    isOpen: false,
+    icon: 'mdi-source-branch',
+    children: []
+  },
+  {
+    title: '第三章 微分中值定理与导数的应用',
+    key: 'chapter3',
+    isOpen: false,
+    icon: 'mdi-math-norm',
+    children: [
+      {
+        title: '3.1 微分中值定理',
+        key: '3.1',
+        to: '/chapter3/section1'
+      },
+      {
+        title: '3.2 洛必达法则',
+        key: '3.2',
+        to: '/chapter3/section2'
+      },
+      {
+        title: '3.3 泰勒公式',
+        key: '3.3',
+        to: '/chapter3/section3'
+      },
+      {
+        title: '3.4 函数的单调性与曲线的凹凸性',
+        key: '3.4',
+        to: '/chapter3/section4'
+      },
+      {
+        title: '3.5 函数的极值',
+        key: '3.5',
+        to: '/chapter3/section5'
+      },
+      {
+        title: '3.6 函数图形的秒回',
+        key: '3.6',
+        to: '/chapter3/section6'
+      },
+      {
+        title: '3.7 弧微分与曲率',
+        key: '3.7',
+        to: '/chapter3/section7'
+      }
+    ]
+  },
+  {
+    title: '第四章 不定积分',
+    key: 'chapter4',
+    isOpen: false,
+    icon: 'mdi-math-integral',
+    children: []
+  },
+  {
+    title: '第五章 定积分',
+    key: 'chapter5',
+    isOpen: false,
+    icon: 'mdi-integral-box',
+    children: []
+  },
+  {
+    title: '第六章 定积分的应用',
+    key: 'chapter6',
+    isOpen: false,
+    icon: 'mdi-chart-arc',
+    children: [
+      {
+        title: '6.1 定积分的元素法',
+        key: '6.1',
+        to: '/chapter6/section1'
+      },
+      {
+        title: '6.2 定积分在几何上的应用',
+        key: '6.2',
+        to: '/chapter6/section2'
+      },
+      {
+        title: '6.3 定积分在物理上的应用',
+        key: '6.3',
+        to: '/chapter6/section3'
+      }
+    ]
+  },
+  {
+    title: '第七章 微分方程的基本概念',
+    key: 'chapter7',
+    isOpen: false,
+    icon: 'mdi-math-compass',
+    children: []
+  },
+  {
     title: '第八章 向量代数与空间解析几何',
     key: 'chapter8',
     isOpen: true,

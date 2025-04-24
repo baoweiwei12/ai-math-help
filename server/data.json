@@ -1,4 +1,582 @@
-[
+[{
+  "name": "第三章 微分中值定理与导数的应用",
+  "type": "chapter",
+  "completed": false,
+  "children": [
+    {
+      "name": "课程思政",
+      "type": "concept",
+      "description": "微积分在科学发展中的贡献",
+      "completed": false,
+      "questions": [
+        {
+          "content": "微积分如何影响了科学发展？",
+          "answer": "微积分为物理学、工程学等领域提供了精确描述变化的数学工具，推动了科学的现代化发展。"
+        }
+      ]
+    },
+    {
+      "name": "3.1 微分中值定理",
+      "type": "section",
+      "completed": false,
+      "children": [
+        {
+          "name": "3.1.1 费马定理",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "概念性"
+          ],
+          "description": "导数与极值",
+          "completed": false,
+          "questions": [
+            {
+              "content": "费马定理的内容是什么？",
+              "answer": "若函数f(x)在点x₀处可导，且在该点取得极值，则f'(x₀)=0。"
+            },
+            {
+              "content": "费马定理的几何意义是什么？",
+              "answer": "函数在极值点处的切线平行于x轴。"
+            }
+          ]
+        },
+        {
+          "name": "3.1.2 罗尔定理",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "概念性"
+          ],
+          "description": "零点与导数",
+          "completed": false,
+          "questions": [
+            {
+              "content": "罗尔定理的内容是什么？",
+              "answer": "如果函数f(x)在闭区间[a,b]上连续，在开区间(a,b)内可导，且f(a)=f(b)，则存在ξ∈(a,b)，使得f'(ξ)=0。"
+            },
+            {
+              "content": "罗尔定理的几何意义是什么？",
+              "answer": "如果曲线的两个端点在同一水平线上，则曲线上至少有一点的切线平行于x轴。"
+            }
+          ]
+        },
+        {
+          "name": "3.1.3 拉格朗日中值定理",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "概念性"
+          ],
+          "description": "导数与增量",
+          "completed": false,
+          "questions": [
+            {
+              "content": "拉格朗日中值定理的内容是什么？",
+              "answer": "如果函数f(x)在闭区间[a,b]上连续，在开区间(a,b)内可导，则存在ξ∈(a,b)，使得f(b)-f(a)=f'(ξ)(b-a)。"
+            },
+            {
+              "content": "拉格朗日中值定理的几何意义是什么？",
+              "answer": "曲线上存在一点，其切线平行于连接曲线两端点的弦。"
+            }
+          ]
+        },
+        {
+          "name": "3.1.4 柯西中值定理",
+          "type": "subtopic",
+          "tags": [
+            "难点",
+            "概念性"
+          ],
+          "description": "两函数导数比值",
+          "completed": false,
+          "questions": [
+            {
+              "content": "柯西中值定理的内容是什么？",
+              "answer": "如果函数f(x)和g(x)在闭区间[a,b]上连续，在开区间(a,b)内可导，且对任意x∈(a,b)，g'(x)≠0，则存在ξ∈(a,b)，使得[f(b)-f(a)]/[g(b)-g(a)]=f'(ξ)/g'(ξ)。"
+            },
+            {
+              "content": "柯西中值定理与拉格朗日中值定理的关系是什么？",
+              "answer": "当g(x)=x时，柯西中值定理退化为拉格朗日中值定理。"
+            }
+          ]
+        },
+        {
+          "name": "3.1.5 泰勒公式",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "应用性"
+          ],
+          "description": "函数的多项式逼近",
+          "completed": false,
+          "questions": [
+            {
+              "content": "泰勒公式的一般形式是什么？",
+              "answer": "若函数f(x)在点x₀的某邻域内有n+1阶导数，则在该邻域内f(x)=f(x₀)+f'(x₀)(x-x₀)+f''(x₀)(x-x₀)²/2!+...+f^(n)(x₀)(x-x₀)^n/n!+R_n(x)，其中R_n(x)为余项。"
+            },
+            {
+              "content": "常见的余项表达式有哪些？",
+              "answer": "拉格朗日余项：R_n(x)=f^(n+1)(ξ)(x-x₀)^(n+1)/(n+1)!，其中ξ介于x₀与x之间；佩亚诺余项：R_n(x)=o((x-x₀)^n)。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3.2 导数的应用",
+      "type": "section",
+      "tags": [
+        "应用",
+        "程序性"
+      ],
+      "completed": false,
+      "children": [
+        {
+          "name": "3.2.1 单调性",
+          "type": "subtopic",
+          "tags": [
+            "基础",
+            "程序性"
+          ],
+          "description": "导数与函数单调性",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何利用导数判断函数的单调性？",
+              "answer": "如果函数f(x)在区间I上可导，且对任意x∈I，f'(x)>0，则函数f(x)在区间I上严格单调递增；如果f'(x)<0，则函数f(x)在区间I上严格单调递减。"
+            }
+          ]
+        },
+        {
+          "name": "3.2.2 极值",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "程序性"
+          ],
+          "description": "导数与极值判定",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何判断函数的极值点？",
+              "answer": "函数f(x)的驻点x₀是极值点的必要条件是f'(x₀)=0；若f'(x₀)=0且f''(x₀)<0，则x₀是极大值点；若f'(x₀)=0且f''(x₀)>0，则x₀是极小值点。"
+            },
+            {
+              "content": "一阶导数符号变化与极值的关系是什么？",
+              "answer": "如果在点x₀的某邻域内，当x<x₀时f'(x)>0，当x>x₀时f'(x)<0，则x₀是极大值点；反之，若当x<x₀时f'(x)<0，当x>x₀时f'(x)>0，则x₀是极小值点。"
+            }
+          ]
+        },
+        {
+          "name": "3.2.3 最值",
+          "type": "subtopic",
+          "tags": [
+            "应用",
+            "程序性"
+          ],
+          "description": "闭区间最值求解",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何求闭区间上函数的最值？",
+              "answer": "在闭区间[a,b]上求连续函数f(x)的最值，需要：1)求出函数在(a,b)内的所有驻点和不可导点；2)计算这些点以及区间端点a和b处的函数值；3)比较所有函数值，最大者为最大值，最小者为最小值。"
+            }
+          ]
+        },
+        {
+          "name": "3.2.4 凹凸性",
+          "type": "subtopic",
+          "tags": [
+            "基础",
+            "概念性"
+          ],
+          "description": "二阶导数与曲线形状",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何判断函数的凹凸性？",
+              "answer": "如果函数f(x)在区间I上二阶可导，且对任意x∈I，f''(x)>0，则函数f(x)在区间I上是凹的（向上凸）；如果f''(x)<0，则函数f(x)在区间I上是凸的（向下凹）。"
+            },
+            {
+              "content": "什么是拐点？如何求拐点？",
+              "answer": "拐点是函数图像凹凸性改变的点。若f''(x₀)=0且在x₀点两侧f''(x)变号，则(x₀,f(x₀))是拐点。"
+            }
+          ]
+        },
+        {
+          "name": "3.2.5 曲率",
+          "type": "subtopic",
+          "tags": [
+            "难点",
+            "概念性"
+          ],
+          "description": "曲线的弯曲程度",
+          "completed": false,
+          "questions": [
+            {
+              "content": "曲率的定义是什么？",
+              "answer": "曲率是描述曲线在某点弯曲程度的量，定义为k=|y''|/[1+(y')²]^(3/2)。"
+            },
+            {
+              "content": "曲率半径的意义是什么？",
+              "answer": "曲率半径是曲率的倒数，表示在该点与曲线最佳拟合的圆的半径。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3.3 函数的作图",
+      "type": "section",
+      "tags": [
+        "应用",
+        "程序性"
+      ],
+      "completed": false,
+      "children": [
+        {
+          "name": "3.3.1 作图步骤",
+          "type": "subtopic",
+          "tags": [
+            "程序性",
+            "应用"
+          ],
+          "description": "函数图像绘制方法",
+          "completed": false,
+          "questions": [
+            {
+              "content": "绘制函数图像的基本步骤是什么？",
+              "answer": "1)确定函数的定义域；2)检查函数的奇偶性和周期性；3)确定函数的单调区间；4)求出函数的极值点；5)确定函数的凹凸区间和拐点；6)求出函数的渐近线；7)绘制函数图像。"
+            }
+          ]
+        },
+        {
+          "name": "3.3.2 渐近线",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "程序性"
+          ],
+          "description": "水平、铅直与斜渐近线",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何求函数的水平渐近线？",
+              "answer": "若lim(x→∞)f(x)=L或lim(x→-∞)f(x)=L，则直线y=L是函数f(x)的水平渐近线。"
+            },
+            {
+              "content": "如何求函数的铅直渐近线？",
+              "answer": "若lim(x→x₀⁺)f(x)=∞或lim(x→x₀⁻)f(x)=∞，则直线x=x₀是函数f(x)的铅直渐近线。"
+            },
+            {
+              "content": "如何求函数的斜渐近线？",
+              "answer": "若lim(x→∞)[f(x)-(kx+b)]=0，则直线y=kx+b是函数f(x)的斜渐近线，其中k=lim(x→∞)f(x)/x，b=lim(x→∞)[f(x)-kx]。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3.4 曲率与曲率圆",
+      "type": "section",
+      "tags": [
+        "难点",
+        "概念性"
+      ],
+      "completed": false,
+      "children": [
+        {
+          "name": "3.4.1 空间曲线的曲率",
+          "type": "subtopic",
+          "tags": [
+            "难点",
+            "概念性"
+          ],
+          "description": "空间曲线曲率计算",
+          "completed": false,
+          "questions": [
+            {
+              "content": "空间曲线的曲率如何计算？",
+              "answer": "对于参数方程x=x(t), y=y(t), z=z(t)表示的空间曲线，其曲率k=|r'×r''|/|r'|³，其中r'和r''分别是速度向量和加速度向量。"
+            }
+          ]
+        },
+        {
+          "name": "3.4.2 曲率圆与曲率中心",
+          "type": "subtopic",
+          "tags": [
+            "应用",
+            "概念性"
+          ],
+          "description": "最佳拟合圆几何意义",
+          "completed": false,
+          "questions": [
+            {
+              "content": "什么是曲率圆？",
+              "answer": "曲率圆是在曲线某点与曲线最佳拟合的圆，其半径等于曲率半径，圆心位于该点法线上。"
+            },
+            {
+              "content": "如何确定曲率中心的坐标？",
+              "answer": "对于平面曲线y=f(x)，点(x₀,y₀)处的曲率中心坐标为(x₀-y'(1+y'²)/y'', y₀+1+y'²/y'')。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3.5 方程近似解",
+      "type": "section",
+      "tags": [
+        "应用",
+        "程序性"
+      ],
+      "completed": false,
+      "children": [
+        {
+          "name": "3.5.1 二分法",
+          "type": "subtopic",
+          "tags": [
+            "基础",
+            "程序性"
+          ],
+          "description": "区间逐步缩小",
+          "completed": false,
+          "questions": [
+            {
+              "content": "二分法的基本原理是什么？",
+              "answer": "若函数f(x)在区间[a,b]上连续，且f(a)·f(b)<0，则方程f(x)=0在区间[a,b]内至少有一个解。二分法通过不断取区间中点，并检查函数在中点的符号，来逐步缩小包含解的区间。"
+            }
+          ]
+        },
+        {
+          "name": "3.5.2 牛顿迭代法",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "程序性"
+          ],
+          "description": "切线逼近",
+          "completed": false,
+          "questions": [
+            {
+              "content": "牛顿迭代法的公式是什么？",
+              "answer": "牛顿迭代法的递推公式为x_(n+1)=x_n-f(x_n)/f'(x_n)，其中x_n是第n次迭代的近似解，f(x)是要求解的方程。"
+            },
+            {
+              "content": "牛顿迭代法的几何意义是什么？",
+              "answer": "从当前近似解处作函数曲线的切线，切线与x轴的交点即为下一次迭代的近似解。"
+            }
+          ]
+        },
+        {
+          "name": "3.5.3 简单迭代法",
+          "type": "subtopic",
+          "tags": [
+            "应用",
+            "程序性"
+          ],
+          "description": "不动点迭代",
+          "completed": false,
+          "questions": [
+            {
+              "content": "简单迭代法的基本思想是什么？",
+              "answer": "将方程f(x)=0转化为等价形式x=φ(x)，然后通过迭代x_(n+1)=φ(x_n)逐步逼近方程的解。"
+            },
+            {
+              "content": "简单迭代法收敛的条件是什么？",
+              "answer": "若函数φ(x)在解x*的某邻域内满足|φ'(x)|<1，则简单迭代法收敛。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3.6 微分在近似计算中的应用",
+      "type": "section",
+      "tags": [
+        "应用",
+        "程序性"
+      ],
+      "completed": false,
+      "children": [
+        {
+          "name": "3.6.1 函数增量近似",
+          "type": "subtopic",
+          "tags": [
+            "基础",
+            "应用"
+          ],
+          "description": "微分代替增量",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何使用微分进行函数增量的近似计算？",
+              "answer": "函数y=f(x)在点x处的增量Δy≈dy=f'(x)Δx，当Δx很小时，这种近似是合理的。"
+            }
+          ]
+        },
+        {
+          "name": "3.6.2 误差估计",
+          "type": "subtopic",
+          "tags": [
+            "应用",
+            "程序性"
+          ],
+          "description": "绝对误差与相对误差",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何估计近似计算的误差？",
+              "answer": "绝对误差|Δy|≈|f'(x)Δx|，相对误差|Δy/y|≈|f'(x)Δx/f(x)|=|xf'(x)/f(x)||Δx/x|。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3.7 洛必达法则",
+      "type": "section",
+      "tags": [
+        "重点",
+        "程序性"
+      ],
+      "completed": false,
+      "children": [
+        {
+          "name": "3.7.1 0/0型",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "程序性"
+          ],
+          "description": "分子分母同时趋于0",
+          "completed": false,
+          "questions": [
+            {
+              "content": "0/0型不定式的洛必达法则是什么？",
+              "answer": "若lim(x→a)f(x)=lim(x→a)g(x)=0，且f'(x)/g'(x)在x→a时的极限存在，则lim(x→a)f(x)/g(x)=lim(x→a)f'(x)/g'(x)。"
+            }
+          ]
+        },
+        {
+          "name": "3.7.2 ∞/∞型",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "程序性"
+          ],
+          "description": "分子分母同时趋于无穷",
+          "completed": false,
+          "questions": [
+            {
+              "content": "∞/∞型不定式的洛必达法则是什么？",
+              "answer": "若lim(x→a)f(x)=lim(x→a)g(x)=∞，且f'(x)/g'(x)在x→a时的极限存在，则lim(x→a)f(x)/g(x)=lim(x→a)f'(x)/g'(x)。"
+            }
+          ]
+        },
+        {
+          "name": "3.7.3 其他不定式",
+          "type": "subtopic",
+          "tags": [
+            "应用",
+            "程序性"
+          ],
+          "description": "0·∞, ∞-∞, 1^∞, 0^0, ∞^0型不定式",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何处理0·∞型不定式？",
+              "answer": "将0·∞型不定式转化为0/0或∞/∞型，然后应用洛必达法则。例如，将f(x)·g(x)写成f(x)/[1/g(x)]或g(x)/[1/f(x)]的形式。"
+            },
+            {
+              "content": "如何处理指数型不定式？",
+              "answer": "对于f(x)^g(x)型不定式，通常取对数转化为g(x)·ln[f(x)]，再应用其他方法。"
+            }
+          ]
+        },
+        {
+          "name": "3.7.4 洛必达法则的应用条件",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "概念性"
+          ],
+          "description": "适用条件与注意事项",
+          "completed": false,
+          "questions": [
+            {
+              "content": "应用洛必达法则需要满足哪些条件？",
+              "answer": "1)原极限形式必须是不定式；2)函数在考虑点的邻域内可导(除了该点本身)；3)导数之比的极限存在或为无穷大。"
+            },
+            {
+              "content": "使用洛必达法则时应注意什么？",
+              "answer": "1)先检查是否为不定式；2)若能直接计算，避免使用洛必达法则；3)可能需要多次应用；4)注意导数之比的极限是否存在。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3.8 泰勒公式的应用",
+      "type": "section",
+      "tags": [
+        "应用",
+        "程序性"
+      ],
+      "completed": false,
+      "children": [
+        {
+          "name": "3.8.1 麦克劳林公式",
+          "type": "subtopic",
+          "tags": [
+            "重点",
+            "概念性"
+          ],
+          "description": "常见函数展开式",
+          "completed": false,
+          "questions": [
+            {
+              "content": "常见函数的麦克劳林展开式有哪些？",
+              "answer": "e^x=1+x+x²/2!+x³/3!+...+x^n/n!+o(x^n)；sinx=x-x³/3!+x⁵/5!-...+(-1)^n·x^(2n+1)/(2n+1)!+o(x^(2n+1))；cosx=1-x²/2!+x⁴/4!-...+(-1)^n·x^(2n)/(2n)!+o(x^(2n))；ln(1+x)=x-x²/2+x³/3-...+(-1)^(n-1)·x^n/n+o(x^n)，|x|<1。"
+            }
+          ]
+        },
+        {
+          "name": "3.8.2 近似计算",
+          "type": "subtopic",
+          "tags": [
+            "应用",
+            "程序性"
+          ],
+          "description": "函数值的近似计算",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何利用泰勒公式进行近似计算？",
+              "answer": "对于难以直接计算的函数值，可以用其在某点附近的泰勒多项式近似代替，并利用余项估计误差。"
+            }
+          ]
+        },
+        {
+          "name": "3.8.3 极限计算",
+          "type": "subtopic",
+          "tags": [
+            "应用",
+            "程序性"
+          ],
+          "description": "利用泰勒公式求极限",
+          "completed": false,
+          "questions": [
+            {
+              "content": "如何利用泰勒公式计算极限？",
+              "answer": "对于一些难以直接应用洛必达法则的极限问题，可以将函数展开为泰勒级数，保留主要项，舍去高阶无穷小项，从而简化计算。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+},
   {
     "name": "第9章 多元函数微分学",
     "type": "chapter",

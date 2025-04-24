@@ -302,7 +302,7 @@ def get_chat_history(path: str, mode: str):
         mode: 聊天模式，"learn" 或 "quiz"
     """
     # 创建 AI 代理
-    ai = OpenAI(api_key="sk-6tg5gVdYiWQ7SaoBB2B73bAe339a405fB1C575AdE50042Fa",base_url="https://pro.aiskt.com/v1")
+    ai = OpenAI(api_key="sk-2VYPaMP7OgdLfiuR1701FbD5E50c40568341A6C53777Fe4e",base_url="https://pro.aiskt.com/v1")
     agent = MathAgent(ai)
     
     # 获取聊天历史
@@ -333,7 +333,7 @@ def send_chat_message(message: ChatMessage):
         raise HTTPException(status_code=404, detail="节点不存在")
     
     # 创建 AI 代理
-    ai = OpenAI(api_key="sk-6tg5gVdYiWQ7SaoBB2B73bAe339a405fB1C575AdE50042Fa",base_url="https://pro.aiskt.com/v1")
+    ai = OpenAI(api_key="sk-2VYPaMP7OgdLfiuR1701FbD5E50c40568341A6C53777Fe4e",base_url="https://pro.aiskt.com/v1")
     agent = MathAgent(ai)
     
     # 准备节点数据

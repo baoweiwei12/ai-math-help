@@ -345,7 +345,21 @@ def send_chat_message(message: ChatMessage):
     return {
         "content": response
     }
-
+@app.get("/api/report")
+def get_report(path: str, mode: Literal["learn", "quiz"] = "learn"):
+    """
+    获取特定节点和模式的报告
+    """
+    # 创建 AI 代理
+    ai = OpenAI(api_key="sk-2VYPaMP7OgdLfiuR1701FbD5E50c40568341A6C53777Fe4e",base_url="https://pro.aiskt.com/v1")
+    agent = MathAgent(ai)
+    # 获取节点数据
+    data = load_course_data()
+    node_data = str(data)
+    response = agent.get_report(path, node_data, mode)
+    return {
+        "content": response
+    }
 # 运行服务器
 if __name__ == "__main__":
     import uvicorn

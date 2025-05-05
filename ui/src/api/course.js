@@ -147,7 +147,22 @@ const courseApi = {
       console.error(`发送聊天消息失败:`, error)
       throw error
     }
-  }
+  },
+
+    /**
+   * 生成学习或测验报告
+   * @param {string} path 节点路径，格式如 "0.1.2"
+   * @param {string} mode 报告模式，"learn" 或 "quiz"
+   * @returns {Promise<Object>} 报告内容
+   */
+    async generateReport(path, mode) {
+      try {
+        return await http.get(`/api/report`, { params: { path, mode } })
+      } catch (error) {
+        console.error(`生成${mode === 'learn' ? '学习' : '测验'}报告失败:`, error)
+        throw error
+      }
+    }
 }
 
 export default courseApi

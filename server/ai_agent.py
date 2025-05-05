@@ -1,6 +1,6 @@
 import json
 from openai import OpenAI
-from typing import Generator, Iterable, List, Dict, Any, Union
+from typing import Generator, Iterable, List, Dict, Any, Literal, Union
 from openai import OpenAI
 from pydantic import BaseModel
 from openai.types.chat import (
@@ -203,8 +203,53 @@ class MathAgent:
         self._save_messages(history_messages)
         
         return content
+    def get_report(self, node_path: str,data:str, mode:Literal["learn","quiz"] = "learn"):
+        promot_map ={
+            "learn":f"""
+            请根据学生的学习历史聊天记录，生成一份学习报告。
+            要求:
+            1. 使用Markdown格式组织你的回答，包括标题、列表、强调等
+            2. 数学公式请使用LaTeX格式：行内公式用$...$包裹，独立公式用$$...$$包裹
+            3. 报告应当包括学生的学习情况、掌握程度、存在的问题及改进建议
+            4. 报告应当客观、全面，既要看到学生的进步，也要指出存在的问题
+            5. 报告应当有针对性，针对学生的薄弱环节给出具体的建议
+            6. 报告应当有启发性，能够激发学生的学习兴趣，引导他们主动思考
+            7. 报告应当有条理，逻辑清晰，层次分明
+            8. 生成综合评分（100分制,并给出理由）
+            要学习的章节内容：
+            {data}
+            """,
+            "quiz":f"""
+            请根据学生的答题历史，生成一份答题报告。
+            要求:
+            1. 使用Markdown格式组织你的回答，包括标题、列表、强调等
+            2. 数学公式请使用LaTeX格式：行内公式用$...$包裹，独立公式用$$...$$包裹
+            3. 报告应当包括学生的答题情况、掌握程度、存在的问题及改进建议
+            4. 报告应当客观、全面，既要看到学生的进步，也要指出存在的问题
+            5. 报告应当有针对性，针对学生的薄弱环节给出具体的建议
+            6. 报告应当有启发性，能够激发学生的学习兴趣，引导他们主动思考
+            7. 报告应当有条理，逻辑清晰，层次分明
+            8. 生成综合评分（100分制,并给出理由）
+            要学习的章节内容：
+            {data}
+            """
+        }
+        history_messages = self._load_messages(node_path, mode)
+        text = json.dumps(history_messages,ensure_ascii=False)
+        api_messages = [
+            ChatCompletionSystemMessageParam(content=promot_map[mode],role="system"),
+            ChatCompletionUserMessageParam(content=text,role="user")
+        ]
+        response = self.ai.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=api_messages,
+            temperature=0.8,
+            max_tokens=8000
+        )
+        content = response.choices[0].message.content
+        return str(content)
+            
         
-
 if __name__ == "__main__":
     # 加载环境变量
     dotenv.load_dotenv()

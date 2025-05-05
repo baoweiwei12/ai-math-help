@@ -80,6 +80,12 @@
                 </v-icon>
                 答题
               </v-btn>
+              <v-btn value="report">
+                <v-icon left>
+                  mdi-file-chart-outline
+                </v-icon>
+                报告
+              </v-btn>
             </v-btn-toggle>
           </v-card-title>
           
@@ -319,6 +325,61 @@
                 </div>
               </div>
               
+              <!-- 报告模式 -->
+              <div
+                v-else-if="activeMode === 'report'"
+                class="report-container"
+              >
+                <div class="d-flex justify-center my-4">
+                  <v-btn-group>
+                    <v-btn 
+                      color="primary" 
+                      :loading="isGeneratingLearnReport"
+                      @click="generateReport('learn')"
+                    >
+                      <v-icon left>
+                        mdi-book-open-variant
+                      </v-icon>
+                      生成学习报告
+                    </v-btn>
+                    <v-btn 
+                      color="error" 
+                      :loading="isGeneratingQuizReport"
+                      @click="generateReport('quiz')"
+                    >
+                      <v-icon left>
+                        mdi-help-circle-outline
+                      </v-icon>
+                      生成测验报告
+                    </v-btn>
+                  </v-btn-group>
+                </div>
+                
+                <v-card
+                  v-if="reportContent"
+                  class="mx-auto my-4 pa-4"
+                  elevation="2"
+                >
+                  <v-card-title class="text-h5 font-weight-bold">
+                    {{ reportType === 'learn' ? '学习报告' : '测验报告' }}
+                  </v-card-title>
+                  <v-divider class="my-2" />
+                  <v-card-text>
+                    <div
+                      class="report-content"
+                      v-html="renderMarkdown(reportContent)"
+                    />
+                  </v-card-text>
+                </v-card>
+                
+                <v-alert
+                  v-else-if="!isGeneratingLearnReport && !isGeneratingQuizReport"
+                  type="info"
+                  text="请点击上方按钮生成报告"
+                  class="my-4"
+                />
+              </div>
+              
               <div class="d-flex justify-end mt-6">
                 <v-btn
                   color="primary"
@@ -345,7 +406,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch, nextTick } from 'vue'
+import { ref, onMounted, computed, watch, nextTick, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import courseApi from '../api/course'
 import { useCourseStore } from '@/stores/courseStore'
@@ -372,6 +433,12 @@ const isAiTyping = ref(false)
 const isQuizTyping = ref(false)
 const chatMessagesRef = ref(null)
 const quizMessagesRef = ref(null)
+
+// 报告相关
+const reportContent = ref('')
+const reportType = ref('learn') // 'learn' 或 'quiz'
+const isGeneratingLearnReport = ref(false)
+const isGeneratingQuizReport = ref(false)
 
 // 添加 KaTeX 渲染器
 const renderMathInElement = (element) => {
@@ -802,15 +869,44 @@ watch(
 )
 
 // 监听模式变化，滚动到底部
-watch(activeMode, () => {
+watch(activeMode, (newMode) => {
   nextTick(() => {
-    if (activeMode.value === 'learn') {
+    if (newMode === 'learn') {
       scrollToBottom(chatMessagesRef.value)
-    } else if (activeMode.value === 'quiz') {
+    } else if (newMode === 'quiz') {
       scrollToBottom(quizMessagesRef.value)
+    } else if (newMode === 'report') {
+      // 切换到报告模式时重置报告内容
+      reportContent.value = ''
     }
   })
 })
+
+// 生成报告
+const generateReport = async (type) => {
+  reportType.value = type
+  
+  if (type === 'learn') {
+    isGeneratingLearnReport.value = true
+  } else {
+    isGeneratingQuizReport.value = true
+  }
+  
+  try {
+    // 调用API生成报告
+    const response = await courseApi.generateReport(nodePath.value, type)
+    reportContent.value = response.content
+  } catch (error) {
+    console.error('生成报告失败:', error)
+    reportContent.value = '生成报告时出错，请稍后重试。'
+  } finally {
+    if (type === 'learn') {
+      isGeneratingLearnReport.value = false
+    } else {
+      isGeneratingQuizReport.value = false
+    }
+  }
+}
 
 onMounted(() => {
   const path = route.query.path
@@ -818,6 +914,15 @@ onMounted(() => {
     nodePath.value = path
     fetchNodeData()
   }
+})
+
+// 组件卸载时清理资源
+onUnmounted(() => {
+  // 重置所有状态
+  nodeData.value = null
+  chatMessages.value = []
+  quizMessages.value = []
+  reportContent.value = ''
 })
 </script>
 
@@ -1120,5 +1225,69 @@ pre {
 .user-message .message-text :deep(code) {
   background-color: rgba(255, 255, 255, 0.2);
   color: #ffffff;
+}
+
+/* 报告样式 */
+.report-container {
+  min-height: 500px;
+  padding: 16px;
+}
+
+.report-content {
+  line-height: 1.6;
+}
+
+.report-content :deep(h1) {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #1976d2;
+}
+
+.report-content :deep(h2) {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #2196f3;
+}
+
+.report-content :deep(h3) {
+  font-size: 1.3rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+  color: #03a9f4;
+}
+
+.report-content :deep(ul), .report-content :deep(ol) {
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.report-content :deep(li) {
+  margin-bottom: 0.5rem;
+}
+
+.report-content :deep(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.report-content :deep(th), .report-content :deep(td) {
+  border: 1px solid #e0e0e0;
+  padding: 8px 12px;
+}
+
+.report-content :deep(th) {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.report-content :deep(blockquote) {
+  border-left: 4px solid #2196f3;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #555;
+  font-style: italic;
 }
 </style> 
